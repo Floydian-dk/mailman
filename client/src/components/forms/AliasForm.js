@@ -66,10 +66,8 @@ class AccountForm extends Component {
       this.setState({
         source_username: alias.source_username,
         source_domain: alias.source_domain,
-        destination: `${alias.destination_username}@${
-          alias.destination_domain
-        }`,
-        enabled: alias.enabled === "1"
+        destination: `${alias.destination_username}@${alias.destination_domain}`,
+        enabled: alias.enabled === 1
       });
     }
 
@@ -269,10 +267,7 @@ const mapStateToProps = state => ({
 const enhance = compose(
   withStyles(styles),
   withRouter,
-  connect(
-    mapStateToProps,
-    { getAll }
-  )
+  connect(mapStateToProps, { getAll })
 );
 
 export default enhance(AccountForm);

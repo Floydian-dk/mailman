@@ -59,8 +59,8 @@ class AccountForm extends Component {
         domain: account.domain,
         password: "",
         quota: account.quota,
-        enabled: account.enabled === "1",
-        sendonly: account.sendonly === "1"
+        enabled: account.enabled === 1,
+        sendonly: account.sendonly === 1
       });
     }
 
@@ -278,10 +278,7 @@ const mapStateToProps = state => ({
 const enhance = compose(
   withStyles(styles),
   withRouter,
-  connect(
-    mapStateToProps,
-    { getAll }
-  )
+  connect(mapStateToProps, { getAll })
 );
 
 export default enhance(AccountForm);

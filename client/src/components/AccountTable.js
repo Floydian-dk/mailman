@@ -57,7 +57,7 @@ const AccountTable = ({ accounts, classes, deleteAccount }) => {
           <TableRow
             key={a.id}
             className={classnames({
-              [classes.disabledCell]: a.enabled === "0"
+              [classes.disabledCell]: a.enabled === 0
             })}
           >
             <TableCell>
@@ -65,7 +65,7 @@ const AccountTable = ({ accounts, classes, deleteAccount }) => {
                 <span>
                   {a.username}@{a.domain}
                 </span>
-                {a.sendonly === "1" && (
+                {a.sendonly === 1 && (
                   <Tooltip title="sendonly" placement="right">
                     <SendIcon className={classes.sendIcon} />
                   </Tooltip>
