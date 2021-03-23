@@ -1,6 +1,7 @@
 import db from "../db";
 import crypto from "crypto";
 import { sha512crypt } from "sha512crypt-node";
+import { bcrypt } from "bcrypt";
 
 class Account {
   async getAccounts() {
@@ -62,14 +63,24 @@ class Account {
   }
 
   hashPassword(password, salt = this.randomSalt()) {
-    return `{SHA512-CRYPT}${sha512crypt(password, salt)}`;
+    //const md5 = require("md5");
+    const bcrypt = require("bcrypt");
+    //return `{SHA512-CRYPT}${sha512crypt(password, salt)}`;
+    //console.log(md5(password));
+    //return `{MD5-CRYPT}${md5(password)}`;
+    //console.log(bcrypt.hashSync(password, 5));
+    return `{BLF-CRYPT}${bcrypt.hashSync(password, 5)}`;
   }
 
   comparePasswords(plainPassword, hashPassword) {
-    const salt = this.getSaltFromHash(hashPassword);
-    const plainPasswordHash = this.hashPassword(plainPassword, salt);
-
-    return plainPasswordHash === hashPassword;
+    const bcrypt = require("bcrypt");
+    //const salt = this.getSaltFromHash(hashPassword);
+    //const plainPasswordHash = this.hashPassword(plainPassword, salt);
+    //console.log('Plain password: ',plainPassword);
+    //console.log('Hash password: ',hashPassword);
+    //console.log(bcrypt.compareSync(plainPassword, hashPassword))
+    const plainPasswordHash = bcrypt.compareSync(plainPassword, hashPassword);
+    return plainPasswordHash;
   }
 }
 
