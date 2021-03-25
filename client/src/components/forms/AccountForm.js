@@ -203,7 +203,7 @@ class AccountForm extends Component {
                   error={touched.quota && !!errors.quota}
                   helperText={touched.quota && errors.quota}
                   id="quota"
-                  label="Quota"
+                  label="Quota (MB)"
                   name="quota"
                   type="number"
                   placeholder="1024"

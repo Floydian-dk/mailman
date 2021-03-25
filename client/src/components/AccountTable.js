@@ -45,7 +45,7 @@ const humanReadableDataUnits = unit => {
 };
 
 const AccountTable = ({ accounts, classes, deleteAccount }) => {
-  const headers = ["Email", "Quota", ""];
+  const headers = ["Email", "Quota", "Action"];
   return (
     <Table headers={headers}>
       {accounts.length === 0 ? (

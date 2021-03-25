@@ -21,7 +21,7 @@ const styles = {
 };
 
 const AliasTable = ({ aliases, classes, deleteAlias }) => {
-  const headers = ["Source Email", "Destination Email", ""];
+  const headers = ["Source Email", "Destination Email", "Action"];
 
   return (
     <Table headers={headers}>
