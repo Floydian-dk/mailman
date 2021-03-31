@@ -14,7 +14,7 @@ module.exports = {
       watch_options: {
         followSymlinks: false
       },
-      instances: cores,
+      instances: "1",
       exec_mode: "cluster"
     }
   ]

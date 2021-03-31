@@ -28,14 +28,14 @@ class AuthenticationController {
     const account = (await Account.getAccount({ username, domain }))[0];
 
     if (!account) {
-      return res.status(401).json({ message: `credentials mismatch` });
+      return res.status(401).json({ message: "Account does not exist" });
     }
 
     // check passwords
     const authenticated = Account.comparePasswords(password, account.password);
 
     if (!authenticated) {
-      return res.status(401).json({ message: `credentials mismatch` });
+      return res.status(401).json({ message: "credentials mismatch" });
     }
 
     // generate JWT

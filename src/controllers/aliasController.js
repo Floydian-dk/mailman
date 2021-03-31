@@ -59,6 +59,9 @@ class AliasController {
           "only admins can create aliases for other domains than the one he belongs to"
       });
 
+    // ToDo: Ensure that we can't create alias loops and alias when account exist.
+    // Can this be done on the DB side?
+
     const id = (await Alias.createAlias({
       source_username,
       source_domain,
@@ -66,7 +69,7 @@ class AliasController {
       destination_domain,
       enabled
     }))[0];
-    if (id) {
+    if (id[0].id != 0) {
       res.json({ alias: (await Alias.getAlias(id))[0] });
     } else {
       const error = new Error("could not save alias");

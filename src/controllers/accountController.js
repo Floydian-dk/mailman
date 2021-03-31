@@ -63,7 +63,8 @@ class AccountController {
       enabled,
       sendonly
     }))[0];
-    if (id) {
+    // console.log(id);
+    if (id[0].id != 0) {
       res.json({ account: (await Account.getAccount({ id }))[0] });
     } else {
       const error = new Error("could not save account");

@@ -45,8 +45,9 @@ class DomainController {
         .json({ message: "only admins are allowed to create domains" });
 
     const id = (await Domain.createDomain(domain))[0];
-    if (id) {
-      res.json({ domain: (await Domain.getDomain(id))[0] });
+    // console.log(id[0].id);
+    if (id[0].id != 0) {
+      res.json({ domain: (await Domain.getDomain(id[0].id))[0] });
     } else {
       const error = new Error("could not save domain");
       error.status = 422;
