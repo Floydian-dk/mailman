@@ -11,11 +11,11 @@ class Alias {
   }
 
   async getAliasesForEmail(email) {
-    const [source_username, source_domain] = email.split("@");
+    const [destination_username, destination_domain] = email.split("@");
     return await db
       .select()
       .from("mailman_aliases_view")
-      .where({ source_username, source_domain })
+      .where({ destination_username, destination_domain })
       .orderBy("source_domain", "asc")
       .orderBy("source_username", "asc");
   }
